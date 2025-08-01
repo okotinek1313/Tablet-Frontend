@@ -97,7 +97,6 @@ export default function AppPage() {
           isOpen={isSelectorOpen}
           onClose={() => setIsSelectorOpen(false)}
           title="Add Apps to Home Screen"
-          className="app-selector-window"
         >
           <div className="app-selector-list">
             {availableApps.map(app => (
