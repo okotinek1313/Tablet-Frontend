@@ -32,6 +32,7 @@
     align-items:center;
     transition:all 0.3s;
     border:none;
+    cursor:pointer;
 }
 
 .lucideIcon:hover{
@@ -41,11 +42,5 @@
 #appsSidebarButton{
     position:absolute;
     left:5%;
-    top:0.5%;
-}
-
-#homeSidebarButton{
-    position:absolute;
-    right:5%;
     top:0.5%;
 }

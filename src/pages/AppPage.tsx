@@ -2,6 +2,7 @@ import { useState } from 'react';
 import AppSelector from '../components/appSelector/appSelector';
 import * as LucideIcon from 'lucide-react'
 import '../css/AppPage.css';
+import {useNavigate} from "react-router-dom";
 
 interface App {
   id: string;
@@ -13,6 +14,7 @@ interface App {
 export default function AppPage() {
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
   const [selectedApps, setSelectedApps] = useState<App[]>([]);
+  const navigate = useNavigate()
 
   const availableApps = [
     {
@@ -47,6 +49,10 @@ export default function AppPage() {
     }
   ];
 
+  function goHome(): void{
+    navigate('/')
+  }
+
   const handleAddApp = (app: App) => {
     if (!selectedApps.some(selected => selected.id === app.id)) {
       setSelectedApps([...selectedApps, app]);
@@ -62,55 +68,63 @@ export default function AppPage() {
     window.open(url, '_blank');
   };
 
-  return (
+    return (
     <div className="app-page">
       <div className="app-page-header">
         <button
-            className="open-selector-button"
-            onClick={() => setIsSelectorOpen(true)}
-          >
-            <LucideIcon.Plus size={30}></LucideIcon.Plus>
-          </button>
-        </div>
+          className="open-selector-button"
+          onClick={() => setIsSelectorOpen(true)}
+          type="button"
+        >
+          <LucideIcon.Plus size={30} />
+        </button>
+      </div>
 
-        <div className="app-grid">
-          {selectedApps.map(app => (
-            <div key={app.id} className="app-card">
-              <img
-                src={app.icon}
-                alt={app.label}
-                className="app-icon"
-                onClick={() => openApp(app.url)}
-              />
-              <div className="app-label">{app.label}</div>
-              <button
-                className="remove-app-button"
-                onClick={() => handleRemoveApp(app.id)}
-              >
-                ×
-              </button>
+      <div className="app-page-content">
+        <button id="homeButton" className="lucideIcon" type="button" onClick={goHome}>
+          <LucideIcon.Home size={28}  />
+        </button>
+      </div>
+
+      <div className="app-grid">
+        {selectedApps.map(app => (
+          <div key={app.id} className="app-card">
+            <img
+              src={app.icon}
+              alt={`${app.label} icon`}
+              className="app-icon"
+              onClick={() => openApp(app.url)}
+            />
+            <div className="app-label">{app.label}</div>
+            <button
+              className="remove-app-button"
+              onClick={() => handleRemoveApp(app.id)}
+              type="button"
+            >
+              ×
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <AppSelector
+        isOpen={isSelectorOpen}
+        onClose={() => setIsSelectorOpen(false)}
+        title="Add Apps to Home Screen"
+      >
+        <div className="app-selector-list">
+          {availableApps.map(app => (
+            <div
+              key={app.id}
+              className="app-selector-item"
+              onClick={() => handleAddApp(app)}
+            >
+              <img src={app.icon} alt={app.label} className="app-selector-icon" />
+              <span>{app.label}</span>
             </div>
           ))}
         </div>
-
-        <AppSelector
-          isOpen={isSelectorOpen}
-          onClose={() => setIsSelectorOpen(false)}
-          title="Add Apps to Home Screen"
-        >
-          <div className="app-selector-list">
-            {availableApps.map(app => (
-              <div
-                key={app.id}
-                className="app-selector-item"
-                onClick={() => handleAddApp(app)}
-              >
-                <img src={app.icon} alt={app.label} className="app-selector-icon" />
-                <span>{app.label}</span>
-              </div>
-            ))}
-          </div>
-        </AppSelector>
-      </div>
-    );
-  }
+      </AppSelector>
+    </div>
+  );
+}
