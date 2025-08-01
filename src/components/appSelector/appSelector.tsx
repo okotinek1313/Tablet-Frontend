@@ -1,5 +1,5 @@
 import React, {type ReactNode} from 'react'
-import './AppSelector.css'
+import './appSelector.css'
 
 interface AppSelector {
     isOpen: boolean;
