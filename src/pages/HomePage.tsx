@@ -16,6 +16,8 @@ export default function HomePage() {
         <button id={"homeSidebarButton"} className={"lucideIcon"}><LucideIcon.Home size={lucideIconSize}></LucideIcon.Home></button>
         <button id={"appsSidebarButton"} className={"lucideIcon"}><LucideIcon.LayoutGrid size={lucideIconSize}></LucideIcon.LayoutGrid></button>
       </Sidebar>
+
+      
     </div>
   );
 }
