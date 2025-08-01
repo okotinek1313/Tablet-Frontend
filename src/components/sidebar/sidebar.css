@@ -1,0 +1,44 @@
+/* Toggle Button */
+#toggleSidebar.sidebar-toggle {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  z-index: 1000; /* Higher than everything */
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  border: none;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.5s, transform 0.3s ease;
+}
+
+#toggleSidebar.sidebar-toggle.open {
+  transform: translateX(250px); /* Move with sidebar */
+}
+
+#toggleSidebar.sidebar-toggle:hover {
+  background-color:rgba(255,255,255,0.3)
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  background: #2d2d2d;
+  z-index: 900; /* Below button */
+  transition: left 0.3s ease;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+/* Other styles remain the same */
