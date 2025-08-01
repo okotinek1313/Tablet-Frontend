@@ -18,7 +18,7 @@
 }
 
 #toggleSidebar.sidebar-toggle.open {
-  transform: translateX(250px); /* Move with sidebar */
+  transform: translateX(310px); /* Move with sidebar */
 }
 
 #toggleSidebar.sidebar-toggle:hover {
@@ -29,12 +29,15 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
+  left: -300px;
+  width: 300px;
   height: 100vh;
   background: #2d2d2d;
   z-index: 900; /* Below button */
   transition: left 0.3s ease;
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+  border-right:rgb(15,15,15) 2px solid;
 }
 
 .sidebar.open {
