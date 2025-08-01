@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import AppSelector from '../components/appSelector/appSelector';
 import * as LucideIcon from 'lucide-react'
 import '../css/AppPage.css';
