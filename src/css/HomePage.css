@@ -44,3 +44,15 @@
     left:5%;
     top:0.5%;
 }
+
+#local-content {
+    background-color:rgba(255,255,255,0.1);
+    cursor:pointer;
+    border:none;
+    border-radius:20px;
+    transition:all 0.3s ease;
+}
+
+#local-content:hover {
+    background-color:rgba(255,255,255,0.3);
+}
